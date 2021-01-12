@@ -43,6 +43,10 @@ public class _02_GuestBook implements ActionListener {
 		panel.add(buttonView);
 		frame.add(panel);
 		frame.pack();
+		addName("Bob Banders");
+		addName("Sandy Summers");
+		addName("Greg Ganders");
+		addName("Donny Doners");
 	}
 	
 	void addName(String gn){
@@ -50,9 +54,9 @@ public class _02_GuestBook implements ActionListener {
 	}
 	
 	void viewNames() {
-		String l = "";
+		String l = "GUEST BOOK\n\n";
 		for(int i = 0; i < guests.size(); i++) {
-			l = l + guests.get(i) + "\n";
+			l = l + "Guest #" + (i+1) + ": " + guests.get(i) + "\n";
 		}
 		JOptionPane.showMessageDialog(null, l);
 	}
