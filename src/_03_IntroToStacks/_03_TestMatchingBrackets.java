@@ -19,7 +19,27 @@ public class _03_TestMatchingBrackets {
 	}
 
 	// USE A STACK TO COMPLETE THE METHOD FOR CHECKING IF EVERY OPENING BRACKET HAS A MATCHING CLOSING BRACKET
+	
 	private boolean doBracketsMatch(String brackets) {
+		Stack<Character> chars = new Stack<Character>();
+		for(int i = 0; i<brackets.length(); i++) {
+			if(Character.toString(brackets.charAt(i)).equals("{")) {
+				chars.push(brackets.charAt(i));
+				System.out.println("case");
+			}else if(Character.toString(brackets.charAt(i)).equals("}")) {
+				if(chars.isEmpty()) {
+					return false;
+				}else {
+					chars.pop();
+				}
+			}
+		}
+		if(chars.isEmpty()) {
+			return true;
+		}else {
+			return false;
+			
+		}
 		
 		//1. Use a for loop to iterate through your brackets String 
 
@@ -42,8 +62,7 @@ public class _03_TestMatchingBrackets {
 
 		//10. else (i.e. everything matched correctly)
 
-    			//11. return true 
-			return true;
+    			//11. return true
 		
 	}
 
