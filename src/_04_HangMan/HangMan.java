@@ -24,7 +24,18 @@ public class HangMan{
 	public static void main(String[] args) {
 		HangMan joe = new HangMan();
 		joe.setup();
-		int numWords = Integer.parseInt(JOptionPane.showInputDialog("How many words do you want to play Hangman with?"));
+		boolean integer = false;
+		String num = "";
+		while(!integer) {
+			num = JOptionPane.showInputDialog("How many words do you want to play Hangman with?");
+			try {
+		        Integer.parseInt(num);
+		        integer = Integer.parseInt(num)>0;
+		    } catch (NumberFormatException nfe) {
+		        
+		    }
+		}
+		int numWords = Integer.parseInt(num);
 		joe.numToWordsInStack(numWords);
 		for(int i = 0; i < numWords; i++) {
 			joe.letters = "";
@@ -38,7 +49,11 @@ public class HangMan{
 			joe.man.setText(joe.hangman[joe.z]);
 			while(!joe.ended) {
 				String g = JOptionPane.showInputDialog("Guess a letter");
-				joe.guessWord(g.charAt(0));
+				if(g.length()>0) {
+					joe.guessWord(g.charAt(0));
+				}else {
+					JOptionPane.showMessageDialog(null, "That is not a letter. Or anything. Guess again.");
+				}
 			}
 		}
 		JOptionPane.showMessageDialog(null, "Game over!");
